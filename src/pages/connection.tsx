@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
-import { BrowserProvider, Contract, ethers, formatUnits, parseUnits } from 'ethers';
+import {
+  BrowserProvider,
+  Contract,
+  ethers,
+  formatUnits,
+  parseUnits,
+} from 'ethers';
 import { MyTokenABI } from '../contracts/MyTokenABI.ts';
-import { CONTRACT_ADDRESS, SEPOLIA_CHAIN_ID } from '../contracts/contractConfig';
+import {
+  CONTRACT_ADDRESS,
+  SEPOLIA_CHAIN_ID,
+} from '../contracts/contractConfig';
 
 // 确保 SEPOLIA_CHAIN_ID 是 number 类型（建议在 contractConfig.ts 中定义为 11155111）
 // 如果你目前是字符串或十六进制，请改为：
@@ -18,7 +27,7 @@ function ConnectionView() {
   const [balance, setBalance] = useState<string | null>(null);
   // provider是ethers.js库中的核心概念。它作为前端应用与以太网区块链之间的桥梁，用于读取链上数据、监听事件、获取网络信息
   const [provider, setProvider] = useState<BrowserProvider | null>(null);
-  console.log("🚀 ~ ConnectionView ~ provider:", provider)
+  console.log('🚀 ~ ConnectionView ~ provider:', provider);
   const [contract, setContract] = useState<MyTokenContract | null>(null);
   const [toAddress, setToAddress] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
@@ -172,7 +181,10 @@ function ConnectionView() {
 
     return () => {
       if (window.ethereum) {
-        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        window.ethereum.removeListener(
+          'accountsChanged',
+          handleAccountsChanged
+        );
       }
     };
   }, []);

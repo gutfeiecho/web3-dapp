@@ -1,67 +1,60 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
-
+import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router';
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "#",
+    title: 'Dashboard',
+    url: 'dashboard',
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
+    title: 'Trade',
+    url: 'trade',
     icon: Inbox,
   },
   {
-    title: "Calendar",
-    url: "#",
+    title: 'Deposits',
+    url: 'deposits',
     icon: Calendar,
   },
   {
-    title: "Search",
-    url: "#",
+    title: 'Protocols',
+    url: 'protocols',
     icon: Search,
   },
   {
-    title: "Settings",
-    url: "#",
+    title: 'Settings',
+    url: 'settings',
     icon: Settings,
   },
-]
+  {
+    title: 'Profile',
+    url: 'profile',
+    icon: Settings,
+  },
+];
 
 export function AppSidebar() {
+  const navigate = useNavigate();
   return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  )
+    <div className="space-y-4">
+      <nav className="rounded-xl p-4">
+        <ul className="space-y-8">
+          {items.map((item) => {
+            return (
+              <li>
+                <span
+                  className="flex items-center gap-2 text-white"
+                  onClick={() => navigate(item.url)}
+                >
+                  <item.icon className="text-white" />
+                  <span className="text-white">{item.title}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </div>
+  );
 }

@@ -8,49 +8,49 @@ import {
 import { parseUnits, formatUnits } from 'viem';
 
 // 合约配置
-const AIRDROP_ADDRESS = "0xC9855e294DEe27E7D3f4C17AF15699bC3a80BFBA";
-const TOKEN_ADDRESS = "0xb07ef8a5457832fF03Dfc8D5aE4402F9000180F7";
+const AIRDROP_ADDRESS = '0xC9855e294DEe27E7D3f4C17AF15699bC3a80BFBA';
+const TOKEN_ADDRESS = '0xb07ef8a5457832fF03Dfc8D5aE4402F9000180F7';
 const TOKEN_DECIMALS = 18; // number 类型，用于 parseUnits
 
 // ABIs
 const AIRDROP_ABI = [
   {
     inputs: [
-      { internalType: "address[]", name: "recipients", type: "address[]" },
-      { internalType: "uint256[]", name: "amounts", type: "uint256[]" },
+      { internalType: 'address[]', name: 'recipients', type: 'address[]' },
+      { internalType: 'uint256[]', name: 'amounts', type: 'uint256[]' },
     ],
-    name: "multiTransferFrom",
+    name: 'multiTransferFrom',
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
 ];
 
 const ERC20_ABI = [
   {
     inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "value", type: "uint256" },
+      { internalType: 'address', name: 'spender', type: 'address' },
+      { internalType: 'uint256', name: 'value', type: 'uint256' },
     ],
-    name: "approve",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "nonpayable",
-    type: "function",
+    name: 'approve',
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
-    name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
+    inputs: [{ internalType: 'address', name: 'account', type: 'address' }],
+    name: 'balanceOf',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
   },
 ] as const;
 
 export default function AirdropView() {
   const { address } = useAccount();
-  const [recipientsInput, setRecipientsInput] = useState("0x...,0x...");
-  const [amountPerUser, setAmountPerUser] = useState("10");
-  const [status, setStatus] = useState("");
+  const [recipientsInput, setRecipientsInput] = useState('0x...,0x...');
+  const [amountPerUser, setAmountPerUser] = useState('10');
+  const [status, setStatus] = useState('');
 
   // 读取代币余额
   const { data: balance } = useReadContract({
@@ -91,7 +91,7 @@ export default function AirdropView() {
     if (isApproveSuccess) {
       const recipients = recipientsInput
         .split(',')
-        .map(addr => addr.trim())
+        .map((addr) => addr.trim())
         .filter(Boolean);
 
       if (recipients.length === 0) {
@@ -116,7 +116,13 @@ export default function AirdropView() {
         setStatus('空投参数错误');
       }
     }
-  }, [isApproveSuccess, approveReceipt, recipientsInput, amountPerUser, writeAirdrop]);
+  }, [
+    isApproveSuccess,
+    approveReceipt,
+    recipientsInput,
+    amountPerUser,
+    writeAirdrop,
+  ]);
 
   // 处理授权失败
   useEffect(() => {
@@ -156,7 +162,7 @@ export default function AirdropView() {
 
     const recipients = recipientsInput
       .split(',')
-      .map(addr => addr.trim())
+      .map((addr) => addr.trim())
       .filter(Boolean);
 
     if (recipients.length === 0) {
@@ -164,11 +170,14 @@ export default function AirdropView() {
       return;
     }
 
-    const totalAmount = BigInt(recipients.length) * parseUnits(amountPerUser, TOKEN_DECIMALS);
+    const totalAmount =
+      BigInt(recipients.length) * parseUnits(amountPerUser, TOKEN_DECIMALS);
 
     // 检查余额是否足够（简单提示，非强制）
     if (balance && totalAmount > balance) {
-      alert(`余额不足！需要 ${formatUnits(totalAmount, TOKEN_DECIMALS)} MTK，当前余额 ${formatUnits(balance, TOKEN_DECIMALS)} MTK`);
+      alert(
+        `余额不足！需要 ${formatUnits(totalAmount, TOKEN_DECIMALS)} MTK，当前余额 ${formatUnits(balance, TOKEN_DECIMALS)} MTK`
+      );
       return;
     }
 
@@ -183,9 +192,12 @@ export default function AirdropView() {
 
   // 格式化余额显示
   const formattedBalance = balance
-    ? parseFloat(formatUnits(balance, TOKEN_DECIMALS)).toLocaleString(undefined, {
-        maximumFractionDigits: 6,
-      })
+    ? parseFloat(formatUnits(balance, TOKEN_DECIMALS)).toLocaleString(
+        undefined,
+        {
+          maximumFractionDigits: 6,
+        }
+      )
     : '...';
 
   return (
@@ -225,7 +237,8 @@ export default function AirdropView() {
             style={{
               marginTop: '1rem',
               padding: '0.5rem 1rem',
-              backgroundColor: isApproving || isAirdropping ? '#9ca3af' : '#3b82f6',
+              backgroundColor:
+                isApproving || isAirdropping ? '#9ca3af' : '#3b82f6',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
@@ -235,8 +248,8 @@ export default function AirdropView() {
             {isApproving
               ? '授权中...'
               : isAirdropping
-              ? '空投中...'
-              : '开始空投'}
+                ? '空投中...'
+                : '开始空投'}
           </button>
 
           {status && (
@@ -246,8 +259,8 @@ export default function AirdropView() {
                 color: status.includes('成功')
                   ? 'green'
                   : status.includes('失败')
-                  ? 'red'
-                  : '#3b82f6',
+                    ? 'red'
+                    : '#3b82f6',
               }}
             >
               {status}
