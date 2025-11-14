@@ -4,6 +4,7 @@ import { AppSidebar } from '@/components/app-sidebar';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Layout() {
   return (
@@ -18,7 +19,7 @@ export default function Layout() {
             className={cn('flex gap-4 items-center justify-between', 'h-16')}
           >
             {/* 欢迎语 */}
-            <span>Welcome Back, Evan</span>
+            <ConnectButton />
             {/* 搜索栏 */}
             <div className="flex gap-3 items-center">
               <Input />
