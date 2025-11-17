@@ -4,7 +4,7 @@ import Layout from './layout';
 import { Dashboard } from './pages/dashboard';
 import { Profile } from './pages/profile';
 import { Protocols } from './pages/protocols';
-import { Trade } from './pages/trade';
+import { Trade } from './pages/trade/trade';
 import { Deposits } from './pages/deposits';
 import { Settings } from './pages/settings';
 

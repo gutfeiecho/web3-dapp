@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import { Repeat } from 'lucide-react';
 import { ethers } from 'ethers';
 import * as echarts from 'echarts';
+import './index.css';
 
 // MockToken ABI（只读余额）
 const MOCK_TOKEN_ABI = [
@@ -255,143 +257,118 @@ export const Trade = () => {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
+    <div className="p-6 w-full mx-auto">
       <h1 className="text-2xl font-bold mb-6">Trade</h1>
-
-      {/* Swap Card */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-200 dark:border-gray-700">
-        {/* From */}
-        <div className="mb-4">
-          <label className="block text-sm text-gray-500 mb-1">You pay</label>
-          <div className="flex items-center border rounded-lg p-3 bg-gray-50 dark:bg-gray-700">
-            <input
-              type="number"
-              value={fromAmount}
-              onChange={(e) => setFromAmount(e.target.value)}
-              placeholder="0.0"
-              className="w-full bg-transparent outline-none text-lg"
-            />
-            <select
-              value={fromToken}
-              onChange={(e) => setFromToken(e.target.value)}
-              className="ml-2 bg-transparent outline-none font-medium"
-            >
-              <option value="ETH">ETH</option>
-              <option value="MTKD">MTKD</option>
-            </select>
-          </div>
-          {fromToken === 'MTKD' && isConnected && (
-            <div className="text-right text-sm text-blue-600 mt-1">
-              Balance: {parseFloat(userBalance).toFixed(4)}{' '}
-              <button
-                onClick={() => setFromAmount(userBalance)}
-                className="underline"
-              >
-                Max
-              </button>
+      {/* Trade Card */}
+      <div className="w-2xs">
+        <div className="w-full flex gap-2">
+          {/* Swap Card */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-200 dark:border-gray-700">
+            {/* From */}
+            <div className="mb-4">
+              <label className="block text-sm text-gray-500 mb-1">
+                You pay
+              </label>
+              <div className="flex items-center border rounded-lg p-3 bg-gray-50 dark:bg-gray-700">
+                <input
+                  type="number"
+                  value={fromAmount}
+                  onChange={(e) => setFromAmount(e.target.value)}
+                  placeholder="0.0"
+                  className="w-full bg-transparent outline-none text-lg text-black"
+                />
+                <select
+                  value={fromToken}
+                  onChange={(e) => setFromToken(e.target.value)}
+                  className="ml-2 bg-transparent outline-none font-medium text-black"
+                >
+                  <option value="ETH">ETH</option>
+                  <option value="MTKD">MTKD</option>
+                </select>
+              </div>
+              {fromToken === 'MTKD' && isConnected && (
+                <div className="text-right text-sm text-blue-600 mt-1">
+                  Balance: {parseFloat(userBalance).toFixed(4)}{' '}
+                  <button
+                    onClick={() => setFromAmount(userBalance)}
+                    className="underline"
+                  >
+                    Max
+                  </button>
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-        {/* Switch Button */}
-        <div className="flex justify-center -mt-3 mb-4">
-          <button
-            onClick={switchTokens}
-            className="bg-gray-200 dark:bg-gray-600 rounded-full p-1 hover:bg-gray-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5 5a1 1 0 011 1v3h3a1 1 0 110 2H6v3a1 1 0 11-2 0V6a1 1 0 011-1z"
-                clipRule="evenodd"
-              />
-              <path
-                fillRule="evenodd"
-                d="M14 14a1 1 0 11-2 0V11H9a1 1 0 110-2h3V6a1 1 0 112 0v3h3a1 1 0 110 2h-3v3z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
+            {/* Switch Button */}
+            <div className="flex justify-center mt-4 mb-4">
+              <Repeat color="#3e9392" />
+            </div>
 
-        {/* To */}
-        <div className="mb-4">
-          <label className="block text-sm text-gray-500 mb-1">
-            You receive
-          </label>
-          <div className="flex items-center border rounded-lg p-3 bg-gray-50 dark:bg-gray-700">
-            <input
-              type="text"
-              value={toAmount}
-              readOnly
-              placeholder="0.0"
-              className="w-full bg-transparent outline-none text-lg text-gray-500"
-            />
-            <select
-              value={toToken}
-              onChange={(e) => setToToken(e.target.value)}
-              className="ml-2 bg-transparent outline-none font-medium"
+            {/* To */}
+            <div className="mb-4">
+              <label className="block text-sm text-gray-500 mb-1">
+                You receive
+              </label>
+              <div className="flex items-center border rounded-lg p-3 bg-gray-50 dark:bg-gray-700">
+                <input
+                  type="text"
+                  value={toAmount}
+                  readOnly
+                  placeholder="0.0"
+                  className="w-full bg-transparent outline-none text-lg text-gray-500"
+                />
+                <select
+                  value={toToken}
+                  onChange={(e) => setToToken(e.target.value)}
+                  className="ml-2 bg-transparent outline-none font-medium text-black"
+                >
+                  <option value="ETH">ETH</option>
+                  <option value="MTKD">MTKD</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Slippage & Gas */}
+            <div className="flex justify-between text-xs text-gray-500 mb-4">
+              <span>
+                Slippage tolerance:
+                <select
+                  value={slippage}
+                  onChange={(e) => setSlippage(e.target.value)}
+                  className="ml-1 bg-transparent outline-none underline"
+                >
+                  <option value="0.1">0.1%</option>
+                  <option value="0.5">0.5%</option>
+                  <option value="1">1%</option>
+                </select>
+              </span>
+              <span>Estimated gas: {gasEstimate}</span>
+            </div>
+
+            {/* Error */}
+            {error && <div className="text-red-500 text-sm mb-3">{error}</div>}
+
+            {/* Swap Button */}
+            <button
+              onClick={handleSwap}
+              disabled={connecting}
+              className={`w-full py-3 rounded-lg font-medium ${
+                connecting
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : isConnected
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    : 'bg-purple-600 hover:bg-purple-700 text-white'
+              }`}
             >
-              <option value="ETH">ETH</option>
-              <option value="MTKD">MTKD</option>
-            </select>
+              {connecting
+                ? 'Connecting...'
+                : isConnected
+                  ? 'Swap'
+                  : 'Connect Wallet'}
+            </button>
           </div>
         </div>
-
-        {/* Slippage & Gas */}
-        <div className="flex justify-between text-xs text-gray-500 mb-4">
-          <span>
-            Slippage tolerance:
-            <select
-              value={slippage}
-              onChange={(e) => setSlippage(e.target.value)}
-              className="ml-1 bg-transparent outline-none underline"
-            >
-              <option value="0.1">0.1%</option>
-              <option value="0.5">0.5%</option>
-              <option value="1">1%</option>
-            </select>
-          </span>
-          <span>Estimated gas: {gasEstimate}</span>
-        </div>
-
-        {/* Error */}
-        {error && <div className="text-red-500 text-sm mb-3">{error}</div>}
-
-        {/* Swap Button */}
-        <button
-          onClick={handleSwap}
-          disabled={connecting}
-          className={`w-full py-3 rounded-lg font-medium ${
-            connecting
-              ? 'bg-gray-400 cursor-not-allowed'
-              : isConnected
-                ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                : 'bg-purple-600 hover:bg-purple-700 text-white'
-          }`}
-        >
-          {connecting
-            ? 'Connecting...'
-            : isConnected
-              ? 'Swap'
-              : 'Connect Wallet'}
-        </button>
-      </div>
-
-      {/* 📈 ECharts Price Chart */}
-      <div className="mt-6">
-        <div className="text-center text-sm text-gray-500 mb-2">
-          MTKD/USD Price (Last 24h)
-        </div>
-        <div
-          ref={chartRef}
-          className="w-full h-48 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
-        />
+        <div className="trade_card_baseline w-full rounded-xl -mt-6" />
       </div>
     </div>
   );
