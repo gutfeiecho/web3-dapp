@@ -260,8 +260,8 @@ export const Trade = () => {
     <div className="p-6 w-full mx-auto">
       <h1 className="text-2xl font-bold mb-6">Trade</h1>
       {/* Trade Card */}
-      <div className="w-2xs">
-        <div className="w-full flex gap-2">
+      <div className="relative w-2xs">
+        <div className="relative z-10 w-full flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-2">
           {/* Swap Card */}
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-200 dark:border-gray-700">
             {/* From */}
@@ -275,12 +275,12 @@ export const Trade = () => {
                   value={fromAmount}
                   onChange={(e) => setFromAmount(e.target.value)}
                   placeholder="0.0"
-                  className="w-full bg-transparent outline-none text-lg text-black"
+                  className="w-full bg-transparent outline-none text-lg text-gray-500"
                 />
                 <select
                   value={fromToken}
                   onChange={(e) => setFromToken(e.target.value)}
-                  className="ml-2 bg-transparent outline-none font-medium text-black"
+                  className="ml-2 bg-transparent outline-none font-medium text-gray-500"
                 >
                   <option value="ETH">ETH</option>
                   <option value="MTKD">MTKD</option>
@@ -320,7 +320,7 @@ export const Trade = () => {
                 <select
                   value={toToken}
                   onChange={(e) => setToToken(e.target.value)}
-                  className="ml-2 bg-transparent outline-none font-medium text-black"
+                  className="ml-2 bg-transparent outline-none font-medium text-gray-500"
                 >
                   <option value="ETH">ETH</option>
                   <option value="MTKD">MTKD</option>
@@ -368,7 +368,7 @@ export const Trade = () => {
             </button>
           </div>
         </div>
-        <div className="trade_card_baseline w-full rounded-xl -mt-6" />
+        <div className="trade_card_baseline w-full rounded-xl absolute bottom-0 left-0" />
       </div>
     </div>
   );

@@ -79,12 +79,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: #000000;
+  background-color: #ffb13d;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  /* border-color: #646cff; */
 }
 button:focus,
 button:focus-visible {
@@ -186,4 +187,45 @@ button:focus-visible {
 ::before,
 ::after {
   box-sizing: border-box;
+}
+
+/* 隐藏默认箭头（可选） */
+input[type='number'] {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+}
+
+/* WebKit 浏览器（Chrome, Edge, Safari） */
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  /* background: #f0f9ff; */
+  border-radius: 6px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+/* 可选：为上下箭头添加自定义图标或颜色 */
+input[type='number']::-webkit-inner-spin-button:hover {
+  /* background: #e0f2fe; */
+}
+
+/* Firefox */
+input[type='number']::-moz-inner-spin-button {
+  background: #f0f9ff;
+  border-radius: 6px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+input[type='number']::-moz-inner-spin-button:hover {
+  background: #e0f2fe;
 }

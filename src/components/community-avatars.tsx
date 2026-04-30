@@ -3,7 +3,7 @@ const CommunityAvatars = () => {
   const avatarIds = [1027, 1035, 1048, 1052, 1067, 1075];
 
   return (
-    <div className="flex w-full h-full flex-col items-center justify-center bg-gray-900 p-4">
+    <div className="flex w-full h-full flex-col items-center justify-center p-4">
       <div className="relative w-full h-full mx-auto">
         {/* 中心大头像 */}
         <img
