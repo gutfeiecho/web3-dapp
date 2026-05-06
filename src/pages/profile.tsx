@@ -122,9 +122,11 @@ export const Profile = () => {
 
   if (!address) {
     return (
-      <div className="p-6 max-w-md mx-auto text-center">
-        <h1 className="text-2xl font-bold mb-4">My Profile</h1>
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-8 border border-gray-200 dark:border-gray-700">
+      <div className="flex flex-col gap-5 items-center justify-center p-6 w-full text-center">
+        <h2 className="w-full text-black text-2xl font-bold text-left">
+          My profile
+        </h2>
+        <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow p-8 border border-gray-200 dark:border-gray-700">
           <div className="mb-6">
             <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto">
               <svg
@@ -163,11 +165,11 @@ export const Profile = () => {
     ensName || `${address.slice(0, 6)}...${address.slice(-4)}`;
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">My Profile</h1>
+    <div className="flex flex-col gap-5 items-center justify-center p-6 max-w-2xl mx-auto">
+      <h2 className="text-black text-2xl font-bold text-left">My profile</h2>
 
       {/* Identity Card */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700 mb-6">
+      <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700 mb-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">

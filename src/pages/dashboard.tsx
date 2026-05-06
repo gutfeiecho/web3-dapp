@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import * as echarts from 'echarts';
-import CommunityAvatars from '@/components/community-avatars';
 const option = {
   xAxis: {
     data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27'],
@@ -78,33 +77,32 @@ export function Dashboard() {
             </thead>
             <tbody>
               <tr className="hover:bg-gray-800/50">
-                <td className="py-3 flex items-center gap-2">
+                <td className="w-1/7 py-3 flex items-center gap-2">
                   <span className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-xs">
                     ₿
                   </span>
                   Bitcoin
                 </td>
-                <td className="text-right">+$187.45</td>
-                <td className="text-right">$24732.89</td>
-                <td className="text-right">+8.56%</td>
-                <td className="text-right">Fixed</td>
-                <td className="text-right">06.10.2026</td>
-                <td className="text-right"></td>
+                <td className="w-1/7 text-right">+$187.45</td>
+                <td className="w-1/7 text-right">$24732.89</td>
+                <td className="w-1/7 text-right">+8.56%</td>
+                <td className="w-1/7 text-right">Fixed</td>
+                <td className="w-1/7 text-right">06.10.2026</td>
+                <td className="w-1/7 text-right"></td>
               </tr>
               <tr className="hover:bg-gray-800/50">
-                <td className="py-3 flex items-center gap-2">
+                <td className="w-1/7 py-3 flex items-center gap-2">
                   <span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-xs">
                     Ξ
                   </span>
                   Ethereum
                 </td>
-                <td className="text-right">1.2345</td>
-                <td className="text-right">$3,890.12</td>
-                <td className="text-right">
-                  <button className="bg-[#ffb13d] px-3 py-1 rounded text-sm">
-                    Trade
-                  </button>
-                </td>
+                <td className="w-1/7 text-right">+$187.45</td>
+                <td className="w-1/7 text-right">$24732.89</td>
+                <td className="w-1/7 text-right">+8.56%</td>
+                <td className="w-1/7 text-right">Fixed</td>
+                <td className="w-1/7 text-right">06.10.2026</td>
+                <td className="w-1/7 text-right"></td>
               </tr>
             </tbody>
           </table>

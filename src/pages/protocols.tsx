@@ -132,10 +132,10 @@ export const Protocols = () => {
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Protocols</h1>
+    <div className="flex flex-col gap-5 p-6 items-center justify-center w-full mx-auto">
+      <h2 className="w-1/3 text-black text-2xl font-bold">Protocols</h2>
 
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700">
+      <div className="w-1/3 bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700">
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-xl font-semibold">{protocol.name}</h2>

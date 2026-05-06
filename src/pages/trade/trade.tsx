@@ -257,15 +257,15 @@ export const Trade = () => {
   };
 
   return (
-    <div className="p-6 w-full mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Trade</h1>
+    <div className="flex flex-col items-center justify-center gap-5 p-6 w-full mx-auto">
+      <h2 className="w-1/3 text-black text-2xl font-bold">Trade</h2>
       {/* Trade Card */}
-      <div className="relative w-2xs">
+      <div className="relative w-1/3">
         <div className="relative z-10 w-full flex gap-2 transition-transform duration-300 ease-in-out hover:-translate-y-2">
           {/* Swap Card */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-200 dark:border-gray-700">
+          <div className="w-full bg-white dark:bg-gray-800 rounded-xl shadow-md p-5 border border-gray-200 dark:border-gray-700">
             {/* From */}
-            <div className="mb-4">
+            <div className="w-full mb-4">
               <label className="block text-sm text-gray-500 mb-1">
                 You pay
               </label>

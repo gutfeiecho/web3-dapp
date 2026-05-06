@@ -127,59 +127,62 @@ export const Deposits: React.FC = () => {
     isWithdrawMining;
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
-      <h2 className="text-2xl font-bold text-gray-800">Simple Yield Farm</h2>
+    <div className="flex flex-col gap-5 w-full items-center justify-center">
+      <h2 className="w-1/3 text-black text-2xl font-bold">Deposits</h2>
+      <div className="w-1/3 mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
+        <h2 className="text-2xl font-bold text-gray-800">Simple Yield Farm</h2>
 
-      {!account ? (
-        <p className="text-red-500">Please connect your wallet</p>
-      ) : (
-        <>
-          {/* 待领取收益 */}
-          <div className="bg-blue-50 p-4 rounded">
-            <p className="text-sm text-gray-600">Pending Reward</p>
-            <p className="text-lg font-semibold text-black">
-              {isPendingLoading
-                ? 'Loading...'
-                : `${formatEther(pendingReward as bigint)} MTKD`}
-            </p>
-          </div>
+        {!account ? (
+          <p className="text-red-500">Please connect your wallet</p>
+        ) : (
+          <>
+            {/* 待领取收益 */}
+            <div className="bg-blue-50 p-4 rounded">
+              <p className="text-sm text-gray-600">Pending Reward</p>
+              <p className="text-lg font-semibold text-black">
+                {isPendingLoading
+                  ? 'Loading...'
+                  : `${formatEther(pendingReward as bigint)} MTKD`}
+              </p>
+            </div>
 
-          {/* 存入表单 */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium">
-              Deposit Amount (MTK)
-            </label>
-            <input
-              type="number"
-              value={depositAmount}
-              onChange={(e) => setDepositAmount(e.target.value)}
-              className="w-full p-2 border rounded text-black"
-              placeholder="1000"
-              disabled={isBusy}
-            />
+            {/* 存入表单 */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium">
+                Deposit Amount (MTK)
+              </label>
+              <input
+                type="number"
+                value={depositAmount}
+                onChange={(e) => setDepositAmount(e.target.value)}
+                className="w-full p-2 border rounded text-black"
+                placeholder="1000"
+                disabled={isBusy}
+              />
+              <button
+                onClick={handleDeposit}
+                disabled={isBusy || !depositAmount}
+                className={`w-full py-2 px-4 rounded ${
+                  isBusy ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'
+                } text-white font-medium`}
+              >
+                {isBusy ? 'Processing...' : 'Deposit'}
+              </button>
+            </div>
+
+            {/* 提现按钮 */}
             <button
-              onClick={handleDeposit}
-              disabled={isBusy || !depositAmount}
+              onClick={handleWithdrawAll}
+              disabled={isBusy}
               className={`w-full py-2 px-4 rounded ${
-                isBusy ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'
+                isBusy ? 'bg-gray-400' : 'bg-red-600 hover:bg-red-700'
               } text-white font-medium`}
             >
-              {isBusy ? 'Processing...' : 'Deposit'}
+              Withdraw All + Claim Rewards
             </button>
-          </div>
-
-          {/* 提现按钮 */}
-          <button
-            onClick={handleWithdrawAll}
-            disabled={isBusy}
-            className={`w-full py-2 px-4 rounded ${
-              isBusy ? 'bg-gray-400' : 'bg-red-600 hover:bg-red-700'
-            } text-white font-medium`}
-          >
-            Withdraw All + Claim Rewards
-          </button>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

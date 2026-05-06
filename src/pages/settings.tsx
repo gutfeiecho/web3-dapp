@@ -110,8 +110,10 @@ export const Settings = () => {
   }
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Protocol Settings</h1>
+    <div className="flex flex-col gap-5 items-center justify-center p-6 max-w-2xl mx-auto">
+      <h2 className="w-full text-black text-2xl font-bold text-left">
+        Protocol Settings
+      </h2>
 
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700">
         <h2 className="text-lg font-semibold mb-4">Protocol Information</h2>

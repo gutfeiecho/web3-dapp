@@ -66,7 +66,7 @@ export default function Layout() {
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <span>Evan</span>
+              <span className="text-black">Evan</span>
               <ConnectButton />
             </div>
           </header>
