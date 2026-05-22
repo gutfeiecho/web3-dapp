@@ -17,6 +17,7 @@ const FARM_ADDRESS = '0x5Fbe833a19B46fa47133950B80C1fC2A56D8249f' as const;
 
 export const Deposits: React.FC = () => {
   const { address: account } = useAccount();
+  console.log('🚀 ~ Deposits ~ account:', account);
   const [depositAmount, setDepositAmount] = useState<string>('1000');
 
   // === 读取待领取收益 ===

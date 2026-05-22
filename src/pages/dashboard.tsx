@@ -66,59 +66,50 @@ export function Dashboard() {
           <table className="w-full text-sm">
             <thead>
               <tr className="text-gray-400">
-                <th className="text-center w-1/7">Vault</th>
-                <th className="text-center w-1/7">Daily</th>
-                <th className="text-center w-1/7">Balance</th>
-                <th className="text-center w-1/7">APY</th>
-                <th className="text-center w-1/7">State</th>
-                <th className="text-center w-1/7">Start Date</th>
-                <th className="text-cemter w-1/7">Liquidity</th>
+                <th className="text-left w-1/7">商品</th>
+                <th className="text-center w-1/7">价格</th>
+                <th className="text-center w-1/7">涨跌幅（24小时）</th>
+                <th className="text-center w-1/7">总市值</th>
+                <th className="text-center w-1/7">美元成交量（24小时）</th>
+                <th className="text-center w-1/7">流通供应量</th>
+                <th className="text-cemter w-1/7">成交量/市值</th>
               </tr>
             </thead>
             <tbody>
               <tr className="hover:bg-gray-800/50">
-                <td className="w-1/7 py-3 flex items-center gap-2">
-                  <span className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-xs">
-                    ₿
-                  </span>
-                  Bitcoin
+                <td className="flex items-center justify-start">
+                  <svg
+                    width="18"
+                    height="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill="#F7931A" d="M0 0h18v18H0z" />
+                    <path
+                      d="M12.836 7.94c.166-1.123-.684-1.721-1.855-2.128l.38-1.513-.926-.23-.369 1.476-.738-.177.375-1.486-.925-.23-.38 1.518-.588-.139v-.005l-1.278-.32-.246.988s.684.16.674.166c.374.096.438.342.427.535L6.96 8.128l.096.032-.102-.022-.604 2.423c-.043.112-.16.283-.423.214.011.016-.668-.16-.668-.16l-.46 1.053 1.203.3.658.17-.385 1.535.925.23.374-1.519.744.193-.38 1.513.925.23.38-1.535c1.577.3 2.765.182 3.262-1.246.401-1.15-.021-1.807-.85-2.246.604-.133 1.059-.534 1.176-1.353h.005zm-2.112 2.963c-.283 1.15-2.219.524-2.845.374l.508-2.037c.626.16 2.637.465 2.337 1.658v.005zm.284-2.979c-.257 1.043-1.872.514-2.39.385l.46-1.844c.523.128 2.202.374 1.93 1.46z"
+                      fill="#fff"
+                    />
+                  </svg>
+                  <span>Bitcoin</span>
                 </td>
-                <td className="w-1/7 text-right">+$187.45</td>
-                <td className="w-1/7 text-right">$24732.89</td>
-                <td className="w-1/7 text-right">+8.56%</td>
-                <td className="w-1/7 text-right">Fixed</td>
-                <td className="w-1/7 text-right">06.10.2026</td>
-                <td className="w-1/7 text-right"></td>
+                <td className="w-1/7 text-center">77,701.18 USD</td>
+                <td className="w-1/7 text-center">+0.29%</td>
+                <td className="w-1/7 text-center">1.56T USD</td>
+                <td className="w-1/7 text-center">26.78B USD</td>
+                <td className="w-1/7 text-center">20.03M</td>
+                <td className="w-1/7 text-center">0.0172</td>
               </tr>
               <tr className="hover:bg-gray-800/50">
-                <td className="w-1/7 py-3 flex items-center gap-2">
-                  <span className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-xs">
-                    Ξ
-                  </span>
-                  Ethereum
-                </td>
-                <td className="w-1/7 text-right">+$187.45</td>
-                <td className="w-1/7 text-right">$24732.89</td>
-                <td className="w-1/7 text-right">+8.56%</td>
-                <td className="w-1/7 text-right">Fixed</td>
-                <td className="w-1/7 text-right">06.10.2026</td>
-                <td className="w-1/7 text-right"></td>
+                <td className="w-1/7 text-center">Ethereum</td>
+                <td className="w-1/7 text-center">2,130.27 USD</td>
+                <td className="w-1/7 text-center">-0.01%</td>
+                <td className="w-1/7 text-center">257.09B USD</td>
+                <td className="w-1/7 text-center">12.13B USD</td>
+                <td className="w-1/7 text-center">120.69M</td>
+                <td className="w-1/7 text-center">0.0472</td>
               </tr>
             </tbody>
           </table>
         </div>
-        {/* <div className="bg-white w-full backdrop-blur-sm rounded-xl p-6 shadow-lg text-center">
-            <div className="flex w-full h-32 justify-center gap-2 mb-4">
-              <CommunityAvatars />
-            </div>
-            <h3 className="font-semibold">Join Our Community</h3>
-            <p className="text-sm text-gray-400 mt-1">
-              Connect with other DeFi users and get early access.
-            </p>
-            <button className="w-full mt-3 px-4 py-2 rounded-lg text-sm transition">
-              Join Now
-            </button>
-          </div> */}
       </div>
     </div>
   );
